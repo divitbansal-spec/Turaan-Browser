@@ -293,13 +293,18 @@ body {
   font-weight: 600;
 }
 
-.news__card a {
+.news__link {
+  border: none;
+  background: none;
   color: var(--primary);
   font-weight: 600;
   text-decoration: none;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
 }
 
-.news__card a:hover {
+.news__link:hover {
   text-decoration: underline;
 }
 
