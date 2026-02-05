@@ -18,12 +18,12 @@
       </header>
 
       <section class="tabs">
-        <button class="tab tab--active" data-action="newtab">
+        <button class="tab tab--active" data-action="newtab" data-tab="newtab">
           <span class="tab__icon">🌐</span>
           <span>New Tab</span>
           <span class="tab__close">×</span>
         </button>
-        <button class="tab">
+        <button class="tab" data-action="news" data-tab="news">
           <span class="tab__icon">📰</span>
           <span>Turaan News</span>
           <span class="tab__close">×</span>
@@ -130,6 +130,58 @@
               <span>🐙</span>
               <span>Code</span>
             </button>
+          </div>
+        </section>
+        <section class="news hidden" id="news">
+          <header class="news__header">
+            <h1>Turaan News</h1>
+            <p>Top stories curated for the Turaan start experience.</p>
+          </header>
+          <div class="news__grid">
+            <article class="news__card">
+              <span class="news__tag">Tech</span>
+              <h2>AI labs announce new model updates</h2>
+              <p>
+                Researchers share breakthroughs in efficiency, speed, and safety
+                across new releases.
+              </p>
+              <a href="https://news.ycombinator.com" target="_blank" rel="noreferrer">
+                Read on HN →
+              </a>
+            </article>
+            <article class="news__card">
+              <span class="news__tag">Productivity</span>
+              <h2>Designers embrace calmer workspaces</h2>
+              <p>
+                Minimal UI trends help teams stay focused while juggling multiple
+                projects.
+              </p>
+              <a href="https://www.theverge.com" target="_blank" rel="noreferrer">
+                Read on The Verge →
+              </a>
+            </article>
+            <article class="news__card">
+              <span class="news__tag">Business</span>
+              <h2>Startups keep shipping with lean teams</h2>
+              <p>
+                Founders share tactics for staying nimble while scaling products
+                globally.
+              </p>
+              <a href="https://www.bloomberg.com" target="_blank" rel="noreferrer">
+                Read on Bloomberg →
+              </a>
+            </article>
+            <article class="news__card">
+              <span class="news__tag">Science</span>
+              <h2>Space telescopes capture vivid new imagery</h2>
+              <p>
+                Fresh observations reveal stunning details about distant systems
+                and galaxies.
+              </p>
+              <a href="https://www.nasa.gov" target="_blank" rel="noreferrer">
+                Read on NASA →
+              </a>
+            </article>
           </div>
         </section>
 

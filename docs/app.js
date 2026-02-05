@@ -2,11 +2,14 @@ const addressInput = document.getElementById("address");
 const frame = document.getElementById("browser-frame");
 const status = document.getElementById("status");
 const newtab = document.getElementById("newtab");
+const news = document.getElementById("news");
 const searchForm = document.getElementById("search-form");
 const searchInput = document.getElementById("search-input");
+const tabs = document.querySelectorAll(".tab[data-tab]");
 
 const TURAAN_SEARCH = "https://www.google.com/search?igu=1&q=";
 const START_DOMAIN = "start.tb";
+const NEWS_DOMAIN = "news.tb";
 
 const updateStatus = (message) => {
   status.textContent = message;
@@ -14,10 +17,24 @@ const updateStatus = (message) => {
 
 const showNewTab = () => {
   newtab.classList.remove("hidden");
+  news.classList.add("hidden");
+  tabs.forEach((tab) => tab.classList.remove("tab--active"));
+  document.querySelector('[data-tab="newtab"]')?.classList.add("tab--active");
   frame.classList.remove("visible");
   frame.removeAttribute("src");
   addressInput.value = START_DOMAIN;
   updateStatus("Turaan is ready.");
+};
+
+const showNewsTab = () => {
+  newtab.classList.add("hidden");
+  news.classList.remove("hidden");
+  tabs.forEach((tab) => tab.classList.remove("tab--active"));
+  document.querySelector('[data-tab="news"]')?.classList.add("tab--active");
+  frame.classList.remove("visible");
+  frame.removeAttribute("src");
+  addressInput.value = NEWS_DOMAIN;
+  updateStatus("Viewing Turaan News.");
 };
 
 const isExternalUrl = (url) => /^https?:\/\//i.test(url);
@@ -35,6 +52,10 @@ const formatUrl = (value) => {
 
   if (trimmed === START_DOMAIN) {
     return START_DOMAIN;
+  }
+
+  if (trimmed === NEWS_DOMAIN) {
+    return NEWS_DOMAIN;
   }
 
   if (trimmed.includes(" ")) {
@@ -65,6 +86,11 @@ const navigate = (value) => {
     return;
   }
 
+  if (target === NEWS_DOMAIN) {
+    showNewsTab();
+    return;
+  }
+
   if (isExternalUrl(target)) {
     window.open(target, "_blank", "noopener,noreferrer");
     showNewTab();
@@ -83,6 +109,7 @@ const actionHandlers = {
   refresh: () => frame.contentWindow?.location.reload(),
   go: () => navigate(addressInput.value),
   newtab: () => showNewTab(),
+  news: () => showNewsTab(),
 };
 
 addressInput.addEventListener("keydown", (event) => {
