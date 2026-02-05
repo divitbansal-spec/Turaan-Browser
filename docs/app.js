@@ -5,7 +5,8 @@ const newtab = document.getElementById("newtab");
 const searchForm = document.getElementById("search-form");
 const searchInput = document.getElementById("search-input");
 
-const TURAAN_SEARCH = "search.html?q=";
+const TURAAN_SEARCH = "https://www.google.com/search?q=";
+const START_DOMAIN = "start.tb";
 
 const updateStatus = (message) => {
   status.textContent = message;
@@ -15,6 +16,7 @@ const showNewTab = () => {
   newtab.classList.remove("hidden");
   frame.classList.remove("visible");
   frame.removeAttribute("src");
+  addressInput.value = START_DOMAIN;
   updateStatus("Turaan is ready.");
 };
 
@@ -27,6 +29,10 @@ const formatUrl = (value) => {
   const trimmed = value.trim();
   if (!trimmed) {
     return "";
+  }
+
+  if (trimmed === START_DOMAIN) {
+    return START_DOMAIN;
   }
 
   if (trimmed.includes(" ")) {
@@ -48,6 +54,12 @@ const navigate = (value) => {
   const target = formatUrl(value);
   if (!target) {
     updateStatus("Enter a search or URL to navigate.");
+    return;
+  }
+
+  if (target === START_DOMAIN) {
+    showNewTab();
+    updateStatus("Returned to start.tb");
     return;
   }
 
