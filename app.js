@@ -56,6 +56,14 @@ const showFrame = () => {
 
 const toProxyUrl = (url) => `${TURAAN_PROXY}${url.replace(/^https?:\/\//i, "")}`;
 
+const toDisplayUrl = (url) => {
+  if (url.startsWith(TURAAN_PROXY)) {
+    return viewerUrl.textContent || url;
+  }
+
+  return url;
+};
+
 const formatUrl = (value) => {
   const trimmed = value.trim();
   if (!trimmed) {
@@ -140,7 +148,7 @@ searchForm.addEventListener("submit", (event) => {
 frame.addEventListener("load", () => {
   const current = frame.src || "New tab";
   updateStatus(`Loaded ${current}`);
-  addressInput.value = current;
+  addressInput.value = toDisplayUrl(current);
 });
 
 for (const button of document.querySelectorAll("[data-action]")) {
