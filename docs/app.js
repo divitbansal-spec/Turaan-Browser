@@ -6,8 +6,12 @@ const news = document.getElementById("news");
 const searchForm = document.getElementById("search-form");
 const searchInput = document.getElementById("search-input");
 const tabs = document.querySelectorAll(".tab[data-tab]");
+const viewer = document.getElementById("viewer");
+const viewerUrl = document.getElementById("viewer-url");
+const viewerOpen = document.getElementById("viewer-open");
 
 const TURAAN_SEARCH = "https://www.google.com/search?igu=1&q=";
+const TURAAN_PROXY = "https://r.jina.ai/http://";
 const START_DOMAIN = "start.tb";
 const NEWS_DOMAIN = "news.tb";
 
@@ -22,6 +26,8 @@ const showNewTab = () => {
   document.querySelector('[data-tab="newtab"]')?.classList.add("tab--active");
   frame.classList.remove("visible");
   frame.removeAttribute("src");
+  viewer.classList.add("hidden");
+  viewerUrl.textContent = START_DOMAIN;
   addressInput.value = START_DOMAIN;
   updateStatus("Turaan is ready.");
 };
@@ -33,6 +39,8 @@ const showNewsTab = () => {
   document.querySelector('[data-tab="news"]')?.classList.add("tab--active");
   frame.classList.remove("visible");
   frame.removeAttribute("src");
+  viewer.classList.add("hidden");
+  viewerUrl.textContent = NEWS_DOMAIN;
   addressInput.value = NEWS_DOMAIN;
   updateStatus("Viewing Turaan News.");
 };
@@ -41,8 +49,12 @@ const isExternalUrl = (url) => /^https?:\/\//i.test(url);
 
 const showFrame = () => {
   newtab.classList.add("hidden");
+  news.classList.add("hidden");
   frame.classList.add("visible");
+  viewer.classList.remove("hidden");
 };
+
+const toProxyUrl = (url) => `${TURAAN_PROXY}${url.replace(/^https?:\/\//i, "")}`;
 
 const formatUrl = (value) => {
   const trimmed = value.trim();
@@ -92,13 +104,17 @@ const navigate = (value) => {
   }
 
   if (isExternalUrl(target)) {
-    window.open(target, "_blank", "noopener,noreferrer");
-    showNewTab();
-    updateStatus(`Opened ${target} in a new tab.`);
+    frame.src = toProxyUrl(target);
+    viewerUrl.textContent = target;
+    viewerOpen.onclick = () => window.open(target, "_blank", "noopener,noreferrer");
+    showFrame();
+    updateStatus(`Previewing ${target} in Turaan View.`);
     return;
   }
 
   frame.src = target;
+  viewerUrl.textContent = target;
+  viewerOpen.onclick = () => window.open(target, "_blank", "noopener,noreferrer");
   showFrame();
   updateStatus(`Turaan is navigating to ${target}`);
 };

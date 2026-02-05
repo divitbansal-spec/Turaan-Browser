@@ -430,6 +430,53 @@ body {
   display: block;
 }
 
+.viewer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+  background: #f8fafc;
+  font-size: 0.9rem;
+}
+
+.viewer.hidden {
+  display: none;
+}
+
+.viewer__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.viewer__label {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.viewer__url {
+  color: var(--muted);
+  word-break: break-all;
+}
+
+.viewer__button {
+  border: 1px solid var(--border);
+  background: white;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--primary);
+  transition: all 0.2s ease;
+}
+
+.viewer__button:hover {
+  border-color: var(--primary);
+  background: #eef2ff;
+}
+
 .statusbar {
   display: flex;
   flex-wrap: wrap;
