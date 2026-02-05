@@ -1,0 +1,21 @@
+# Turaan Browser
+
+Turaan Browser is a lightweight, Chrome-style browser mockup with a dedicated Turaan Search experience powered by DuckDuckGo.
+
+## Run locally
+
+Open `index.html` directly in your browser, or serve the folder with a simple static server:
+
+```bash
+python -m http.server 8000
+```
+
+Then visit `http://localhost:8000`.
+
+## Deploy on GitHub Pages
+
+1. Push this repository to GitHub.
+2. In **Settings → Pages**, set **Source** to `Deploy from a branch` and pick your default branch with `/ (root)`.
+3. Save, then open the URL GitHub Pages provides.
+
+GitHub Pages serves the static files directly, so no build step is required.
