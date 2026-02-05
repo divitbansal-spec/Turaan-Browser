@@ -16,6 +16,7 @@ Then visit `http://localhost:8000`.
 
 1. Push this repository to GitHub.
 2. In **Settings → Pages**, set **Source** to `Deploy from a branch` and pick your default branch with `/ (root)`.
+   - If you already set GitHub Pages to `/docs`, keep it there—this repo mirrors the site in `docs/` too.
 3. Save, then open the URL GitHub Pages provides.
 
 GitHub Pages serves the static files directly, so no build step is required.

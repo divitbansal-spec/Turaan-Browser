@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Turaan Browser</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="window">
+      <header class="window__top">
+        <div class="window__controls">
+          <span class="control control--close" aria-hidden="true"></span>
+          <span class="control control--min" aria-hidden="true"></span>
+          <span class="control control--max" aria-hidden="true"></span>
+        </div>
+        <div class="window__title">Turaan Browser</div>
+      </header>
+
+      <section class="tabs">
+        <button class="tab tab--active" data-action="newtab">
+          <span class="tab__icon">🌐</span>
+          <span>New Tab</span>
+          <span class="tab__close">×</span>
+        </button>
+        <button class="tab">
+          <span class="tab__icon">📰</span>
+          <span>Turaan News</span>
+          <span class="tab__close">×</span>
+        </button>
+        <button class="tab tab--add" aria-label="Add tab">+</button>
+      </section>
+
+      <section class="omnibox">
+        <div class="omnibox__nav">
+          <button class="icon-button" data-action="back" aria-label="Go back">
+            ◀
+          </button>
+          <button class="icon-button" data-action="forward" aria-label="Go forward">
+            ▶
+          </button>
+          <button class="icon-button" data-action="refresh" aria-label="Refresh">
+            ⟳
+          </button>
+        </div>
+        <div class="omnibox__input">
+          <span class="omnibox__lock">🔒</span>
+          <input
+            id="address"
+            name="address"
+            type="text"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Search Turaan or type a URL"
+          />
+          <button class="omnibox__cta" type="button" data-action="go">
+            Go
+          </button>
+        </div>
+        <div class="omnibox__profile">
+          <span class="profile">T</span>
+        </div>
+      </section>
+
+      <section class="bookmarks">
+        <button class="bookmark" data-url="https://example.com">Example</button>
+        <button class="bookmark" data-url="https://developer.mozilla.org">
+          MDN
+        </button>
+        <button class="bookmark" data-url="https://www.wikipedia.org">
+          Wikipedia
+        </button>
+        <button class="bookmark" data-url="https://news.ycombinator.com">
+          HN
+        </button>
+        <button class="bookmark" data-url="https://github.com">GitHub</button>
+      </section>
+
+      <main class="content">
+        <section class="newtab" id="newtab">
+          <div class="newtab__brand">
+            <span class="brand__mark">T</span>
+            <div>
+              <h1>Turaan Search</h1>
+              <p>Browse with clarity. Turaan Search is powered by DuckDuckGo.</p>
+            </div>
+          </div>
+          <form class="search" id="search-form">
+            <div class="search__field">
+              <span class="search__icon">🔍</span>
+              <input
+                id="search-input"
+                type="text"
+                placeholder="Search the web with Turaan"
+                autocomplete="off"
+              />
+              <button class="search__mic" type="button" aria-label="Voice search">
+                🎙️
+              </button>
+            </div>
+            <div class="search__actions">
+              <button class="button" type="submit">Turaan Search</button>
+              <button class="button button--ghost" type="button">
+                I'm Feeling Focused
+              </button>
+            </div>
+          </form>
+          <div class="shortcuts">
+            <button class="shortcut" data-url="https://mail.google.com">
+              <span>✉️</span>
+              <span>Mail</span>
+            </button>
+            <button class="shortcut" data-url="https://www.youtube.com">
+              <span>▶️</span>
+              <span>Video</span>
+            </button>
+            <button class="shortcut" data-url="https://www.thedrive.com">
+              <span>📂</span>
+              <span>Drive</span>
+            </button>
+            <button class="shortcut" data-url="https://openai.com">
+              <span>✨</span>
+              <span>Labs</span>
+            </button>
+            <button class="shortcut" data-url="https://calendar.google.com">
+              <span>🗓️</span>
+              <span>Calendar</span>
+            </button>
+            <button class="shortcut" data-url="https://github.com">
+              <span>🐙</span>
+              <span>Code</span>
+            </button>
+          </div>
+        </section>
+
+        <iframe
+          class="browser__frame"
+          id="browser-frame"
+          title="Turaan Browser Frame"
+        ></iframe>
+      </main>
+
+      <footer class="statusbar">
+        <span id="status">Turaan is ready.</span>
+        <span class="statusbar__hint">Tip: Press Enter to navigate.</span>
+        <span class="statusbar__note">Search powered by DuckDuckGo.</span>
+      </footer>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
