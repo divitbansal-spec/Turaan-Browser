@@ -5,7 +5,7 @@ const newtab = document.getElementById("newtab");
 const searchForm = document.getElementById("search-form");
 const searchInput = document.getElementById("search-input");
 
-const TURAAN_SEARCH = "https://duckduckgo.com/?q=";
+const TURAAN_SEARCH = "search.html?q=";
 
 const updateStatus = (message) => {
   status.textContent = message;
