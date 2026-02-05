@@ -5,7 +5,7 @@ const newtab = document.getElementById("newtab");
 const searchForm = document.getElementById("search-form");
 const searchInput = document.getElementById("search-input");
 
-const TURAAN_SEARCH = "https://www.google.com/search?q=";
+const TURAAN_SEARCH = "https://www.google.com/search?igu=1&q=";
 const START_DOMAIN = "start.tb";
 
 const updateStatus = (message) => {
@@ -19,6 +19,8 @@ const showNewTab = () => {
   addressInput.value = START_DOMAIN;
   updateStatus("Turaan is ready.");
 };
+
+const isExternalUrl = (url) => /^https?:\/\//i.test(url);
 
 const showFrame = () => {
   newtab.classList.add("hidden");
@@ -39,7 +41,7 @@ const formatUrl = (value) => {
     return `${TURAAN_SEARCH}${encodeURIComponent(trimmed)}`;
   }
 
-  if (/^https?:\/\//i.test(trimmed)) {
+  if (isExternalUrl(trimmed)) {
     return trimmed;
   }
 
@@ -60,6 +62,13 @@ const navigate = (value) => {
   if (target === START_DOMAIN) {
     showNewTab();
     updateStatus("Returned to start.tb");
+    return;
+  }
+
+  if (isExternalUrl(target)) {
+    window.open(target, "_blank", "noopener,noreferrer");
+    showNewTab();
+    updateStatus(`Opened ${target} in a new tab.`);
     return;
   }
 

@@ -1,6 +1,7 @@
 # Turaan Browser
 
 Turaan Browser is a lightweight, Chrome-style browser mockup with a dedicated Turaan Search experience powered by Google Search.
+External sites open in a new browser tab to avoid iframe restrictions.
 
 ## Run locally
 
