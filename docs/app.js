@@ -106,7 +106,6 @@ const navigate = (value) => {
   if (isExternalUrl(target)) {
     frame.src = toProxyUrl(target);
     viewerUrl.textContent = target;
-    viewerOpen.onclick = () => window.open(target, "_blank", "noopener,noreferrer");
     showFrame();
     updateStatus(`Previewing ${target} in Turaan View.`);
     return;
@@ -114,7 +113,6 @@ const navigate = (value) => {
 
   frame.src = target;
   viewerUrl.textContent = target;
-  viewerOpen.onclick = () => window.open(target, "_blank", "noopener,noreferrer");
   showFrame();
   updateStatus(`Turaan is navigating to ${target}`);
 };
@@ -159,5 +157,19 @@ for (const chip of document.querySelectorAll("[data-url]")) {
     navigate(url);
   });
 }
+
+viewerOpen.addEventListener("click", async () => {
+  const url = viewerUrl.textContent || "";
+  if (!url) {
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText(url);
+    updateStatus(`Copied ${url}`);
+  } catch (error) {
+    updateStatus(`Copy failed. URL: ${url}`);
+  }
+});
 
 showNewTab();
