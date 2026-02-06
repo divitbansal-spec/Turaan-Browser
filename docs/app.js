@@ -8,7 +8,6 @@ const searchInput = document.getElementById("search-input");
 const tabs = document.querySelectorAll(".tab[data-tab]");
 const viewer = document.getElementById("viewer");
 const viewerUrl = document.getElementById("viewer-url");
-const viewerOpen = document.getElementById("viewer-open");
 
 const TURAAN_SEARCH = "https://www.google.com/search?igu=1&q=";
 const TURAAN_PROXY = "https://r.jina.ai/http://";
@@ -165,19 +164,5 @@ for (const chip of document.querySelectorAll("[data-url]")) {
     navigate(url);
   });
 }
-
-viewerOpen.addEventListener("click", async () => {
-  const url = viewerUrl.textContent || "";
-  if (!url) {
-    return;
-  }
-
-  try {
-    await navigator.clipboard.writeText(url);
-    updateStatus(`Copied ${url}`);
-  } catch (error) {
-    updateStatus(`Copy failed. URL: ${url}`);
-  }
-});
 
 showNewTab();

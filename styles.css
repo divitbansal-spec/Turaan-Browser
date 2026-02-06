@@ -466,21 +466,6 @@ body {
   word-break: break-all;
 }
 
-.viewer__button {
-  border: 1px solid var(--border);
-  background: white;
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-weight: 600;
-  cursor: pointer;
-  color: var(--primary);
-  transition: all 0.2s ease;
-}
-
-.viewer__button:hover {
-  border-color: var(--primary);
-  background: #eef2ff;
-}
 
 .statusbar {
   display: flex;
